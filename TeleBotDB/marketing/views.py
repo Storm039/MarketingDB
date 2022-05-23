@@ -45,7 +45,7 @@ class BonusesApiUpdate(APIView):
         try:
             user_obj = Users.objects.get(pk=id_user)
         except Users.DoesNotExist:
-            return Response(f"The user with the specified pk does not exist")
+            return Response({'error': f"The user with the specified pk does not exist"})
 
         try:
             obj = Bonuses.objects.get(user=id_user)

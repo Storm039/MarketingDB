@@ -11,6 +11,7 @@ class UsersApiList(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
+        self.permission_classes = (IsAdminUser,)
         queryset = Users.objects.all()
         return Response({'list_users': UsersSerializer(queryset, many=True).data})
 
