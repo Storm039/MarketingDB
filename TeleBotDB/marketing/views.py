@@ -19,7 +19,7 @@ class PromotionsApiList(APIView):
         try:
             queryset = Promotions.objects.filter(
                 Q(activity=True) & Q(company=company) &
-                (Q(date_start__lte=datetime.now()) | Q(date_end__gte=datetime.now()))
+                (Q(date_start__lte=datetime.now()) & Q(date_end__gte=datetime.now()))
             )
         except:
             return Response({'error': "Object does not exists"})
